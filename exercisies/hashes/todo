@@ -1,0 +1,39 @@
+Access a Value by Key
+Input: {name: "Juan", age: 25} → access :name
+Expected Output: "Juan"
+
+Add a New Key-Value Pair
+Input: {a: 1, b: 2} → add c: 3
+Expected Output: {a: 1, b: 2, c: 3}
+
+Update a Value
+Input: {count: 5} → update to 10
+Expected Output: {count: 10}
+
+Delete a Key
+Input: {x: 1, y: 2, z: 3} → delete :y
+Expected Output: {x: 1, z: 3}
+
+List All Keys
+Input: {name: "Ana", age: 30}
+Expected Output: [:name, :age]
+
+List All Values
+Input: {a: 10, b: 20}
+Expected Output: [10, 20]
+
+Check if Key Exists
+Input: {name: "Luis", country: "Argentina"} → check :age
+Expected Output: false
+
+Merge Two Hashes
+Input: {a: 1} and {b: 2}
+Expected Output: {a: 1, b: 2}
+
+Count How Many Values Are Even
+Input: {a: 2, b: 3, c: 4}
+Expected Output: 2
+
+Invert Hash (swap keys and values)
+Input: {a: 1, b: 2}
+Expected Output: {1 => :a, 2 => :b}

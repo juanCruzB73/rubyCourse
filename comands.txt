@@ -1,0 +1,6 @@
+✅ Check Installed Gems
+gem list
+✅ Uninstall a Gem
+gem uninstall colorize
+✅Install Bundler
+gem install bundler

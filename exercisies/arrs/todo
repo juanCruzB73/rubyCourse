@@ -1,0 +1,39 @@
+Sum All Elements
+Input: [2, 4, 6, 8]
+Expected Output: 20
+
+Find the Maximum Value
+Input: [5, 17, 3, 9]
+Expected Output: 17
+
+Reverse the Array
+Input: [1, 2, 3, 4]
+Expected Output: [4, 3, 2, 1]
+
+Remove Duplicates
+Input: [1, 2, 2, 3, 4, 4, 5]
+Expected Output: [1, 2, 3, 4, 5]
+
+Filter Even Numbers
+Input: [1, 2, 3, 4, 5, 6]
+Expected Output: [2, 4, 6]
+
+Count Elements Greater Than 10
+Input: [5, 12, 3, 20, 8]
+Expected Output: 2
+
+Double Every Value
+Input: [1, 2, 3]
+Expected Output: [2, 4, 6]
+
+Join into String with Comma
+Input: ["apple", "banana", "cherry"]
+Expected Output: "apple,banana,cherry"
+
+Find Index of Value
+Input: [10, 20, 30, 40], search for 30
+Expected Output: 2
+
+Rotate Left by One Position
+Input: [1, 2, 3, 4]
+Expected Output: [2, 3, 4, 1]
