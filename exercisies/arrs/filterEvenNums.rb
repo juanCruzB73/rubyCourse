@@ -10,15 +10,10 @@ input = [1, 2, 3, 4, 5, 6]
 result=[]
 
 #way one
-#input.each do |num| 
-#    unless isEven(num)
-#        result.push(num)
-#    end
-#end
-
-#way two
-for i in 0..input.length-1
-    unless isEven(input[i])
+input.each do |num| 
+    unless isEven(num)
+        result.push(num)
+    end
 end
 
-puts result
+puts input

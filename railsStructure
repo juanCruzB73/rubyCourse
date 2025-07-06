@@ -1,0 +1,67 @@
+app/ 	
+Contains the controllers, models, views, helpers, mailers, 
+jobs, and assets for your application. You'll focus mostly 
+on this folder for the remainder of this guide.
+
+bin/ 
+Contains the rails script that starts your app and can
+contain other scripts you use to set up, update, deploy,
+or run your application.
+
+config/
+Contains configuration for your application's routes, database,
+and more. This is covered in more detail in Configuring
+Rails Applications.
+
+config.ru
+Rack configuration for Rack-based servers used to start
+the application.
+
+db/
+Contains your current database schema,
+as well as the database migrations.
+
+Dockerfile 	
+Configuration file for Docker.
+
+Gemfile
+Gemfile.lock 	
+These files allow you to specify what gem dependencies
+are needed for your Rails application. These files are used
+by the Bundler gem.
+
+lib/
+Extended modules for your application.
+
+log/
+Application log files.
+
+public/
+Contains static files and compiled assets.
+When your app is running, this directory will
+be exposed as-is
+
+Rakefile
+This file locates and loads tasks that can be run
+from the command line. The task definitions are defined
+throughout the components of Rails. Rather than changing
+Rakefile, you should add your own tasks by adding files to
+the lib/tasks directory of your application.
+
+Rakefile
+This file locates and loads tasks that can be run from
+the command line. The task definitions are defined throughout
+the components of Rails. Rather than changing Rakefile,
+you should add your own tasks by adding files to 
+the lib/tasks directory of your application.
+
+.rubocop.yml 
+This file contains the configuration for RuboCop.
+
+3.4. Model-View-Controller Basics
+
+Rails code is organized using the Model-View-Controller (MVC) architecture. With MVC, we have three main concepts where the majority of our code lives:
+
+Model - Manages the data in your application. Typically, your database tables.
+View - Handles rendering responses in different formats like HTML, JSON, XML, etc.
+Controller - Handles user interactions and the logic for each request.
