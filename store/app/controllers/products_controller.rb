@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :authorized
+
     # GET METHOD
     def getPorducts
         products=Product.all

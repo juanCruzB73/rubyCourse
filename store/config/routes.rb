@@ -14,9 +14,13 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.draw do
+  # PRODUCT
   get "/products", to: "products#getPorducts"
   get "/products/:id", to: "products#getProductsById"
   post "/products", to: "products#create"
   put "/products/:id", to: "products#update"
   delete "/products/:id", to: "products#delete"
+  # AUTH
+  post "/register", to: "auth#register"
+  post "/login",    to: "auth#login"
 end

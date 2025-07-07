@@ -1,0 +1,21 @@
+Proyecto nuevo rails
+rails new *proyect name*
+
+npm i en ruby:
+bundle install
+
+Run app:
+ruby bin/rails server
+
+genereate model
+ruby bin/rails generate model Product name:string
+
+generate controller
+ruby bin/rails generate controller Products
+
+run migration db:
+ruby bin/rails db:migrate
+
+start proyect
+ruby bin/rails server
+
