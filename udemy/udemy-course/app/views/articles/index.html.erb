@@ -1,0 +1,22 @@
+<h1>Article details</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td><%= article.title %></td>
+            <td><%= article.description %></td>
+            <td>
+                <%= button_to 'Show', article_path(article),method: :get, data: { confirm: 'Are you sure you want to delete this article?' } %>
+                <%= button_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure you want to delete this article?' } %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
