@@ -3,4 +3,5 @@ class Article < ApplicationRecord
   # https://guides.rubyonrails.org/active_record_validations.html
   validates :title, presence: true, length: { minimum: 6, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 100 }
+  belongs_to :user
 end
