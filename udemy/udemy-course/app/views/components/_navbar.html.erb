@@ -15,7 +15,9 @@
           </a>
           <ul class="dropdown-menu">
             <a class="nav-link" href="<%= articles_path %>">Show articles</a>
-            <li><a class="dropdown-item"  href="<%= new_article_path %>">Create article</a></li>
+            <% if logged_in? %>
+              <li><a class="dropdown-item"  href="<%= new_article_path %>">Create article</a></li>
+            <% end %>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>

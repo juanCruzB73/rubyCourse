@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
+  before_action :require_user, except: [ :show, :index, :new, :create ]
+  before_action :require_same_user, only: [ :update, :edit, :destroy ]
 
   # GET /users or /users.json
   def index
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
+        session[:user_id]=@user.id
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -55,6 +58,8 @@ class UsersController < ApplicationController
       format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+
+    redirect_to login_path
   end
 
   private
@@ -66,5 +71,11 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
+
+    def require_same_user
+      if current_user != @user
+        redirect_to user_path(@user)
+      end
     end
 end

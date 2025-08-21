@@ -4,14 +4,17 @@
 
 <div>
   <%= link_to "Back to users", users_path %>
-  <div class="mt-4">
-    <%= link_to "Edit Your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
-  </div>
   <br>
   <% @user.articles.each do |article| %>
     <p>title: <%= link_to article.title, article_path(article) %></p>
     <p>description: <%= article.description %></p>
   <% end %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  
+  <% if logged_in? && @user==current_user %>
+    <div class="mt-4">
+      <%= link_to "Edit Your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+    </div>
+    <%= button_to "Destroy this user", @user, method: :delete %>
+  <% end %>
+  
 </div>
