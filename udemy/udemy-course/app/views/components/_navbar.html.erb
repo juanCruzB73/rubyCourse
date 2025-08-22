@@ -26,7 +26,12 @@
         </li>
         <% if logged_in? %>
           <li class="nav-item">
+           <p>
             <%=  link_to current_user.username, user_path(current_user)%>
+            <% if is_admin? %>
+              <strong> logged as admin</strong>
+            <% end %>
+           </p>
           </li>
         <% else %>
           <li class="nav-item">

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
-  helper_method :logged_in?, :current_user, :require_user
+  helper_method :logged_in?, :current_user, :require_user, :is_admin?
 
   def require_user
     if !logged_in?
@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def is_admin?
+    !!current_user&.admin
   end
 end

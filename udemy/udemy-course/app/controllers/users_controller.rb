@@ -53,13 +53,11 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy!
-
+    session[:user_id]=nil if @user == current_user
     respond_to do |format|
       format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
-
-    redirect_to login_path
   end
 
   private
@@ -74,8 +72,8 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
-        redirect_to user_path(@user)
+      if current_user != @user && !current_user.admin
+        redirect_to user_path
       end
     end
 end
