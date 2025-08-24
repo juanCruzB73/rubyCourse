@@ -1,0 +1,13 @@
+<%= render 'layouts/messages', object: @category  %>
+
+<%= form_with(model: @category, local: true) do |form| %>
+  <p>
+    <%= form.label :name %> <br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Go Back', categories_path, method: :get  %></p>
