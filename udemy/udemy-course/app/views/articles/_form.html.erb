@@ -9,9 +9,23 @@
     <%= form.label :description %> <br>
     <%= form.text_area :description %>
   </p>
+
+  <div>
+    <%= form.label :category %> <br>
+    <%= form.collection_select(:category_ids, @categories, :id, :name,{selected: @article.category_ids},{multiple:true}) %>
+  </div>
+<!--
+      :categories_ids,    # attribute
+      @categories.all,    # collection
+      :id,                # value method
+      :name,              # text method
+      {},                 # options hash (empty here)
+      { multiple: true }  # html options
+-->
   <p>
     <%= form.submit %>
   </p>
 <% end %>
 
 <p><%= link_to 'Go Back', articles_path, method: :get  %></p>
+

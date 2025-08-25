@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_categories, only: [ :new, :edit ]
   before_action :require_user, except: [ :show, :index ]
   before_action :require_same_user, only: [ :update, :edit, :destroy ]
   def index
@@ -24,6 +25,9 @@ class ArticlesController < ApplicationController
   def edit
   end
   def update
+    puts "########"
+    puts article_params
+    puts "########"
     if @article.update(article_params)
       flash[:notice]="Article was updated successfully"
       redirect_to @article
@@ -37,12 +41,15 @@ class ArticlesController < ApplicationController
   end
 
   private
+    def set_categories
+      @categories=Category.all
+    end
     def set_article
       # this variable is usable in html.erb
       @article = Article.find_by(id: params[:id])
     end
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
     def require_same_user
       if current_user != @article.user && !current_user.admin

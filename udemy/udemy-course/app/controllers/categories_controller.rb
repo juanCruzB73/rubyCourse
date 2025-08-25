@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
     @categories=Category.paginate(page: params[:page], per_page: 5)
   end
   def show
+    @articles=@category.articles
   end
   def new
     @category=Category.new

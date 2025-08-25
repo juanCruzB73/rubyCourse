@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  has_many :article_categories
+  has_many :categories, through: :article_categories
   # validations
   # https://guides.rubyonrails.org/active_record_validations.html
   belongs_to :user

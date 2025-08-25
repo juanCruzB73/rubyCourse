@@ -1,6 +1,9 @@
 <h1>Category details</h1>
 <p><%= link_to 'Go Back', categories_path, method: :get  %></p>
-<p><strong>Name: </strong><%= @category.name %></p>
+<p><strong>Articulos asciados a: </strong><%= @category.name %></p>
+<% @articles.each do |article| %>
+    <p><%= article.title %></p>
+<% end %>
 
 <% if is_admin? %>
     <%= link_to 'Edit', edit_category_path(@category),method: :get %>
