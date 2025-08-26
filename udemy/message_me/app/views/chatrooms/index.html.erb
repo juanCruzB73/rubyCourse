@@ -4,13 +4,14 @@
 
 <h1>Chatrooms</h1>
 
-<div id="chatrooms">
-  <% @chatrooms.each do |chatroom| %>
-    <%= render chatroom %>
-    <p>
-      <%= link_to "Show this chatroom", chatroom %>
-    </p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render "shared/liveChat" %>
+    </div>   
+    <div class="col">
+      <%= render "shared/sideMenu" %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New chatroom", new_chatroom_path %>

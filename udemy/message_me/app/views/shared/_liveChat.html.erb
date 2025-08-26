@@ -1,0 +1,24 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="d-flex flex-column justify-content-between  mb-2">
+      <div class="d-flex flex-column justify-content-between  mb-2">
+        <div class="d-flex justify-content-between  mb-2">
+          <h6 class="card-subtitle text-muted mb-0">
+            <small class="text-muted"> • 2 minutes ago</small> <span> username</span>
+          </h6>
+          <div>
+            <%= link_to 'Edit', root_path, method: :get, class: "btn btn-sm btn-outline-primary me-1" %>
+            <%= link_to 'Delete', root_path, method: :get, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger" %>
+          </div>
+        </div>
+        <p class="card-text">THIS IS A COMMENT</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon3">Comment</span>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+      </div>
+    </div>
+  </div>
+</div>
