@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ create destroy ]
 
   # GET /sessions or /sessions.json
   def index
@@ -21,49 +21,26 @@ class SessionsController < ApplicationController
 
   # POST /sessions or /sessions.json
   def create
-    @session = Session.new(session_params)
-
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: "Session was successfully created." }
-        format.json { render :show, status: :created, location: @session }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
+    if @user&.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Logged in!"
+    else
+      flash.now[:alert] = "Invalid username or password"
+      render :new
     end
   end
 
-  # PATCH/PUT /sessions/1 or /sessions/1.json
-  def update
-    respond_to do |format|
-      if @session.update(session_params)
-        format.html { redirect_to @session, notice: "Session was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @session }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /sessions/1 or /sessions/1.json
   def destroy
-    @session.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to sessions_path, notice: "Session was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    session[:user_id] = nil
+    redirect_to root_path, notice: "Logged out!"
   end
+
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_session
-      @session = Session.find(params.expect(:id))
+    def set_user
+      @user = User.find_by(username: params[:username])
     end
 
-    # Only allow a list of trusted parameters through.
     def session_params
       params.fetch(:session, {})
     end
