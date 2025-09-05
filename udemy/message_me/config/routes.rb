@@ -10,7 +10,5 @@ Rails.application.routes.draw do
       delete :logout
     end
   end
-
   root to: "chatrooms#index"
-  delete "logout", to: "sessions#destroy"
 end

@@ -28,8 +28,13 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item"> <%= link_to 'Log In', new_session_path, class: "btn btn-primary" %></li>
-        <li class="nav-item"> <%= link_to 'Sing Up', new_user_path, class: "btn btn-primary" %></li>
+        
+        <% if logged_in? %>
+          <li><%= button_to "Logout", session_path(session[:user_id]), method: :delete, data: { turbo_confirm: "Are you sure?" },class:"btn btn-danger" %></li>
+        <% else %>
+          <li class="nav-item"> <%= link_to 'Log In', new_session_path, class: "btn btn-primary me-3" %></li>
+          <li class="nav-item"> <%= link_to 'Sing Up', new_user_path, class: "btn btn-primary" %></li>
+        <% end %>
       </ul>
     </div>
   </div>

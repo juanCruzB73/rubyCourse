@@ -25,7 +25,10 @@
   </head>
   <header>
     <%= render "shared/navBar" %>
-    <%= render "shared/header" %>
+      <% unless ( current_page?(new_session_path) || current_page?(new_user_path) || logged_in?)%>     
+        <%= render "shared/header" %>     
+      <% end %>
+    
   </header>
   <body>
     <%= yield %>
