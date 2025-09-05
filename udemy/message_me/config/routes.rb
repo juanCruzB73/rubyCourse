@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   resources :chatrooms
   resources :users
   resources :messages
+  resources :sessions, only: [] do
+  collection do
+      get :login
+      post :create
+      delete :logout
+    end
+  end
+
   root to: "chatrooms#index"
-  get "login", to: "sessions#new"
-  post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 end

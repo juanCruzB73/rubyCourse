@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   # POST /sessions or /sessions.json
   def create
-    if @user&.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Logged in!"
     else
