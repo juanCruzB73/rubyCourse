@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [ :show, :destroy, :update ]
+  before_action :set_message, only: [ :show, :destroy, :update, :edit ]
   def index
     @messages=Message.all
   end
@@ -18,24 +18,28 @@ class MessagesController < ApplicationController
       redirect_to edit_user
     end
   end
+  def edit
+    @messages = Message.all
+    redirect_to chatrooms_path(edit_message_id: @message.id)
+  end
   def update
     if @message.update(message_params)
-      redirect_to root_path
       flash[:notice] = "Message updated."
     else
       flash[:alert] = "Message could not be updated."
-      redirect_to root_path
     end
+    redirect_to chatrooms_path(edit_message_id: @message.id)
   end
+
   def destroy
     if @message.destroy
-      redirect_to root_path
       flash[:notice] = "Message deleted."
     else
       flash[:alert] = "Message could not be deleted."
-      redirect_to root_path
     end
+    redirect_to chatrooms_path
   end
+
   private
     def set_message
       @message=Message.find(params[:id])

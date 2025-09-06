@@ -1,10 +1,17 @@
 class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: %i[ show edit update destroy ]
 
-  # GET /chatrooms or /chatrooms.json
   def index
     @chatrooms = Chatroom.all
+    @messages = Message.all
+
+    if params[:edit_message_id]
+      @message = Message.find(params[:edit_message_id])
+    else
+      @message = Message.new
+    end
   end
+
 
   # GET /chatrooms/1 or /chatrooms/1.json
   def show
@@ -60,8 +67,9 @@ class ChatroomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chatroom
-      @chatroom = Chatroom.find(params.expect(:id))
+      @chatroom = Chatroom.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def chatroom_params
