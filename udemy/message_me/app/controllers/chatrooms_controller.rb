@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: %i[ show edit update destroy ]
-
+  before_action :require_user
   def index
     @chatrooms = Chatroom.all
     @messages = Message.all
