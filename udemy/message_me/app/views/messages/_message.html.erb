@@ -1,0 +1,16 @@
+<div class="mb-2" id="message_<%= message.id %>">
+  <div class="d-flex justify-content-between">
+    <h6 class="card-subtitle text-muted mb-0">
+      <small class="text-muted"><%= message.time_ago_in_words_custom %></small>
+      <span><%= message.user.username %></span>
+    </h6>
+    <div class="d-flex flex-row">
+      <% if current_user == message.user %>
+        <%= button_to 'Edit', edit_message_path(message), class: "btn btn-sm btn-outline-primary me-1" %>
+        <%= button_to 'Delete', message_path(message), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <p class="card-text"><%= message.body %></p>
+</div>

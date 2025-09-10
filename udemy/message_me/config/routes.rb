@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     end
   end
   root to: "chatrooms#index"
+  mount ActionCable.server, at: "/cable"
 end

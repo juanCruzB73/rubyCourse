@@ -12,10 +12,14 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save
       flash[:notice] = "Message sent."
+      ActionCable.server.broadcast(
+        "chatroom_channel",
+        { foo: render_to_string(partial: "messages/message", locals: { message: @message }) }
+      )
       redirect_to root_path
     else
       flash[:alert] = "Message could not be sent."
-      redirect_to edit_user
+      # redirect_to edit_user
     end
   end
   def edit
