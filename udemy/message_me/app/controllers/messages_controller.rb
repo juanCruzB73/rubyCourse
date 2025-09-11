@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
         "chatroom_channel",
         { foo: render_to_string(partial: "messages/message", locals: { message: @message }) }
       )
-      redirect_to root_path
     else
       flash[:alert] = "Message could not be sent."
       # redirect_to edit_user
